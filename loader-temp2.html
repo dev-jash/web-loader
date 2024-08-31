@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spinning Circles</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #111;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .container {
+        position: relative;
+        width: 70vh; /* SIZE */
+        height: 70vh; /* SIZE */
+        transform-style: preserve-3d;
+        transform: perspective(1000px) rotateY(45deg) rotateX(45deg);
+      }
+
+      .circle {
+        position: absolute;
+        background: transparent;
+        border: 2px solid #fff; /* COLOR */
+        border-radius: 50%;
+        animation: spin 12s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotateX(0deg);
+        }
+        100% {
+          transform: rotateX(360deg);
+        }
+      }
+
+      /* Dynamic styles for circles */
+      .container .circle:nth-child(1) {
+        width: 70vh;
+        height: 70vh;
+        left: 0;
+        top: 0;
+        animation-duration: 12s;
+        animation-direction: normal;
+      }
+
+      .container .circle:nth-child(2) {
+        width: 64.375vh;
+        height: 64.375vh;
+        left: 2.8125vh;
+        top: 2.8125vh;
+        animation-duration: 11.5s;
+        animation-direction: reverse;
+      }
+
+      .container .circle:nth-child(3) {
+        width: 58.75vh;
+        height: 58.75vh;
+        left: 5.625vh;
+        top: 5.625vh;
+        animation-duration: 11s;
+        animation-direction: normal;
+      }
+
+      .container .circle:nth-child(4) {
+        width: 53.125vh;
+        height: 53.125vh;
+        left: 8.4375vh;
+        top: 8.4375vh;
+        animation-duration: 10.5s;
+        animation-direction: reverse;
+      }
+
+      .container .circle:nth-child(5) {
+        width: 47.5vh;
+        height: 47.5vh;
+        left: 11.25vh;
+        top: 11.25vh;
+        animation-duration: 10s;
+        animation-direction: normal;
+      }
+
+      .container .circle:nth-child(6) {
+        width: 41.875vh;
+        height: 41.875vh;
+        left: 14.0625vh;
+        top: 14.0625vh;
+        animation-duration: 9.5s;
+        animation-direction: reverse;
+      }
+
+      .container .circle:nth-child(7) {
+        width: 36.25vh;
+        height: 36.25vh;
+        left: 16.875vh;
+        top: 16.875vh;
+        animation-duration: 9s;
+        animation-direction: normal;
+      }
+
+      .container .circle:nth-child(8) {
+        width: 30.625vh;
+        height: 30.625vh;
+        left: 19.6875vh;
+        top: 19.6875vh;
+        animation-duration: 8.5s;
+        animation-direction: reverse;
+      }
+
+      .container .circle:nth-child(9) {
+        width: 25vh;
+        height: 25vh;
+        left: 22.5vh;
+        top: 22.5vh;
+        animation-duration: 8s;
+        animation-direction: normal;
+      }
+
+      .container .circle:nth-child(10) {
+        width: 19.375vh;
+        height: 19.375vh;
+        left: 25.3125vh;
+        top: 25.3125vh;
+        animation-duration: 7.5s;
+        animation-direction: reverse;
+      }
+
+      .container .circle:nth-child(11) {
+        width: 13.75vh;
+        height: 13.75vh;
+        left: 28.125vh;
+        top: 28.125vh;
+        animation-duration: 7s;
+        animation-direction: normal;
+      }
+
+      .container .circle:nth-child(12) {
+        width: 8.125vh;
+        height: 8.125vh;
+        left: 30.9375vh;
+        top: 30.9375vh;
+        animation-duration: 6.5s;
+        animation-direction: reverse;
+      }
+
+      .container .circle:nth-child(13) {
+        width: 2.5vh;
+        height: 2.5vh;
+        left: 33.75vh;
+        top: 33.75vh;
+        animation-duration: 3s;
+        animation-direction: normal;
+      }
+
+      .container .circle:nth-child(14) {
+        width: 0;
+        height: 0;
+        left: 0;
+        top: 0;
+        animation-duration: 5.5s;
+        animation-direction: reverse;
+      }
+
+      .container .circle:nth-child(15) {
+        width: 0;
+        height: 0;
+        left: 0;
+        top: 0;
+        animation-duration: 5s;
+        animation-direction: normal;
+      }
+
+      .container .circle:nth-child(16) {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Create 16 circles -->
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rainbow Loader</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        background-color: #1d1f20;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+      }
+
+      .loader {
+        position: relative;
+        width: 70px;
+        height: 70px;
+        animation: rotate 1s infinite linear;
+      }
+
+      .circle {
+        position: absolute;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        box-shadow: 0 0 0 4px;
+        transform-origin: 50% 50%;
+        animation: ball 1s infinite ease-in-out;
+      }
+
+      /* Rainbow colors */
+      .circle:nth-child(1) {
+        box-shadow: 0 0 0 4px #ff0000; /* Red */
+      }
+
+      .circle:nth-child(2) {
+        box-shadow: 0 0 0 4px #ff7f00; /* Orange */
+      }
+
+      .circle:nth-child(3) {
+        box-shadow: 0 0 0 4px #ffff00; /* Yellow */
+      }
+
+      .circle:nth-child(4) {
+        box-shadow: 0 0 0 4px #00ff00; /* Green */
+      }
+
+      .circle:nth-child(5) {
+        box-shadow: 0 0 0 4px #0000ff; /* Blue */
+      }
+
+      .circle:nth-child(6) {
+        box-shadow: 0 0 0 4px #4b0082; /* Indigo */
+      }
+
+      .circle:nth-child(7) {
+        box-shadow: 0 0 0 4px #8b00ff; /* Violet */
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes ball {
+        0% {
+          box-shadow: 0 0 0 4px;
+          transform: translate(0, 0);
+        }
+        50% {
+          box-shadow: 0 0 0 4px;
+          transform: translate(15px, 15px);
+        }
+        100% {
+          box-shadow: 0 0 0 4px;
+          transform: translate(0, 0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loader">
+      <div class="circle" style="--i: 1"></div>
+      <div class="circle" style="--i: 2"></div>
+      <div class="circle" style="--i: 3"></div>
+      <div class="circle" style="--i: 4"></div>
+      <div class="circle" style="--i: 5"></div>
+      <div class="circle" style="--i: 6"></div>
+      <div class="circle" style="--i: 7"></div>
+    </div>
+  </body>
+</html>
