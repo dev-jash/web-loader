@@ -5,3 +5,4 @@ git branch -M main
 git push -u origin main
 
 was debugging test2.html
+working on temp7 an 5,6

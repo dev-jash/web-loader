@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loading Animation</title>
+    <style>
+      :root {
+        --speed: 2.5s; /* second */
+        --part-second: 0.25s; /* second */
+        --animation-timing: ease-in-out;
+        --logo-width: 180px;
+        --dot-count: 5;
+        --dot-width: calc(var(--logo-width) / 3);
+        --total-speed: calc(var(--speed) + var(--part-second) * 4);
+        --rotate-finish: calc(
+          (var(--total-speed) - (var(--part-second) * 4)) / var(--total-speed) *
+            100%
+        );
+        --scale-finish: calc(var(--rotate-finish) / 2);
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+        outline: 0;
+        border: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
+        background: linear-gradient(
+          45deg,
+          #6fc7b5 0%,
+          #13bdce 20%,
+          #0094d9 40%,
+          #5a3694 60%,
+          #ee4d74 80%,
+          #f58c58 100%
+        );
+        background-size: 600%;
+        background-position: 0% 100%;
+        animation: gradient calc(var(--total-speed) * 2) var(--animation-timing)
+          infinite;
+        position: relative;
+      }
+
+      .loading {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .logo {
+        background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/440564/galleria-en.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        width: var(--logo-width);
+        height: 100%;
+      }
+
+      .dots {
+        position: relative;
+        width: 300px;
+        height: 300px;
+      }
+
+      .dots.animate .dot {
+        animation: loading-block var(--total-speed) var(--animation-timing)
+          infinite;
+      }
+
+      .dots.animate .dot:after {
+        animation: loading-dot var(--total-speed) var(--animation-timing)
+          infinite;
+      }
+
+      .dots .dot {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border-radius: 50%;
+        background: transparent;
+      }
+
+      .dots .dot:after {
+        content: "";
+        display: block;
+        width: var(--dot-width);
+        height: var(--dot-width);
+        background-color: #fff;
+        border-radius: 50%;
+        position: absolute;
+        transform: scale(0.17);
+      }
+
+      .dots .dot:nth-child(1) {
+        top: 120px;
+        left: 120px;
+        animation-delay: 0s;
+      }
+
+      .dots .dot:nth-child(2) {
+        top: -194px;
+        left: -161px;
+        animation-delay: var(--part-second);
+      }
+
+      .dots .dot:nth-child(3) {
+        top: -101px;
+        left: -161px;
+        animation-delay: calc(var(--part-second) * 2);
+      }
+
+      .dots .dot:nth-child(4) {
+        top: 200px;
+        left: 116px;
+        animation-delay: calc(var(--part-second) * 3);
+      }
+
+      .dots .dot:nth-child(5) {
+        top: 214px;
+        left: -161px;
+        animation-delay: calc(var(--part-second) * 4);
+      }
+
+      .dots .dot:nth-child(1):after {
+        transform-origin: top right;
+      }
+
+      .dots .dot:nth-child(2):after {
+        transform-origin: bottom right;
+      }
+
+      .dots .dot:nth-child(3):after {
+        transform-origin: bottom right;
+      }
+
+      .dots .dot:nth-child(4):after {
+        transform-origin: top left;
+      }
+
+      .dots .dot:nth-child(5):after {
+        transform-origin: bottom left;
+      }
+
+      @keyframes loading-block {
+        0%,
+        100% {
+          transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes loading-dot {
+        0%,
+        100% {
+          transform: scale(0.17);
+        }
+        50% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes gradient {
+        0% {
+          background-position: 0% 100%;
+        }
+        50% {
+          background-position: 100% 0%;
+        }
+        100% {
+          background-position: 0% 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loading">
+      <div class="logo"></div>
+      <div class="dots animate">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+  </body>
+</html>

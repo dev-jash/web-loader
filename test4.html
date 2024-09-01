@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loading Animation</title>
+    <style>
+      /* Import Google Fonts */
+      @import url("https://fonts.googleapis.com/css?family=Exo:300");
+
+      /* Basic settings */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Exo", sans-serif;
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Loader styles */
+      .wrap-loader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #000; /* Black background */
+      }
+
+      .loader {
+        position: relative;
+        width: 20rem; /* Dimension from SCSS */
+        height: 20rem; /* Dimension from SCSS */
+      }
+
+      .loader::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 8.7rem; /* 20rem / 2.3 */
+        height: 8.7rem; /* 20rem / 2.3 */
+        background: #000; /* Black */
+        border-radius: 50%;
+        z-index: 1;
+      }
+
+      .box {
+        position: absolute;
+        width: 10rem; /* 20rem / 2 */
+        height: 10rem; /* 20rem / 2 */
+        overflow: hidden;
+      }
+
+      .box::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        opacity: 0.1; /* Fading start */
+      }
+
+      /* Different animations for each box */
+      .box:nth-child(1) {
+        top: 0;
+        left: 0;
+      }
+
+      .box:nth-child(1)::before {
+        top: 50%;
+        left: 50%;
+        background: #4185f3; /* Color from the palette */
+        animation: lightMe1 4s ease-out infinite;
+      }
+
+      .box:nth-child(2) {
+        top: 0;
+        right: 0;
+      }
+
+      .box:nth-child(2)::before {
+        top: 50%;
+        right: 50%;
+        background: #33a753; /* Color from the palette */
+        animation: lightMe2 4s ease-out infinite;
+      }
+
+      .box:nth-child(3) {
+        bottom: 0;
+        right: 0;
+      }
+
+      .box:nth-child(3)::before {
+        bottom: 50%;
+        right: 50%;
+        background: #fabb04; /* Color from the palette */
+        animation: lightMe3 4s ease-out infinite;
+      }
+
+      .box:nth-child(4) {
+        bottom: 0;
+        left: 0;
+      }
+
+      .box:nth-child(4)::before {
+        bottom: 50%;
+        left: 50%;
+        background: #e94234; /* Color from the palette */
+        animation: lightMe4 4s ease-out infinite;
+      }
+
+      .wrap-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px; /* Letter dimension from SCSS */
+        height: 40px; /* Letter dimension from SCSS */
+        overflow: hidden;
+        z-index: 2;
+      }
+
+      .text {
+        position: relative;
+        width: 40px; /* Letter dimension from SCSS */
+        height: 40px; /* Letter dimension from SCSS */
+        line-height: 40px; /* Letter dimension from SCSS */
+        animation: slider 8s ease-in infinite;
+      }
+
+      .text span {
+        display: block;
+        width: 40px; /* Letter dimension from SCSS */
+        height: 40px; /* Letter dimension from SCSS */
+        line-height: 40px; /* Letter dimension from SCSS */
+        text-align: center;
+        font-size: 2em; /* Font size from SCSS */
+        color: #fff; /* White color */
+        opacity: 0;
+        animation: fadeInOut 1s infinite;
+      }
+
+      .loader-text {
+        color: #fff; /* White color */
+        transform: translateY(-2rem);
+        letter-spacing: 6px;
+        opacity: 0.2;
+        animation: blink 1s ease-out infinite alternate;
+      }
+
+      /* Keyframes */
+      @keyframes fadeInOut {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes lightMe1 {
+        0% {
+          opacity: 0.1;
+        }
+        25% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes lightMe2 {
+        0% {
+          opacity: 0.1;
+        }
+        25% {
+          opacity: 0.1;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes lightMe3 {
+        0% {
+          opacity: 0.1;
+        }
+        50% {
+          opacity: 0.1;
+        }
+        75% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes lightMe4 {
+        0% {
+          opacity: 0.1;
+        }
+        75% {
+          opacity: 0.1;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slider {
+        0% {
+          transform: translateY(0);
+        }
+        12.5% {
+          transform: translateY(-40px);
+        }
+        25% {
+          transform: translateY(-40px);
+        }
+        37.5% {
+          transform: translateY(-80px);
+        }
+        50% {
+          transform: translateY(-80px);
+        }
+        62.5% {
+          transform: translateY(-120px);
+        }
+        75% {
+          transform: translateY(-120px);
+        }
+        87.5% {
+          transform: translateY(-160px);
+        }
+        100% {
+          transform: translateY(-160px);
+        }
+      }
+
+      @keyframes blink {
+        from {
+          opacity: 0.2;
+        }
+        to {
+          opacity: 0.75;
+        }
+      }
+    </style>
+    <!-- Link to external CSS file -->
+  </head>
+  <body>
+    <div class="wrap-loader">
+      <div class="loader">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="wrap-text">
+          <div class="text">
+            <!-- JavaScript will populate this part -->
+          </div>
+        </div>
+        <div class="loader-text">Loading</div>
+      </div>
+    </div>
+
+    <script>
+      // JavaScript to dynamically add characters to the loader
+      const textContainer = document.querySelector(".text");
+      const characters = ["L", "O", "A", "D", "I", "N", "G", "..."];
+
+      characters.forEach((val) => {
+        const span = document.createElement("span");
+        span.textContent = val;
+        textContainer.appendChild(span);
+      });
+    </script>
+  </body>
+</html>
